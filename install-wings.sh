@@ -6,7 +6,8 @@ set -e
 #                                                                           #
 # Project 'pterodactyl-installer' for wings                                 #
 #                                                                           #
-# Copyright (C) 2018 - 2021, Vilhelm Prytz, <vilhelm@prytznet.se>           #
+# Copyright (C) 2018 - 2021, Snzy Junior
+                  #
 #                                                                           #
 #   This program is free software: you can redistribute it and/or modify    #
 #   it under the terms of the GNU General Public License as published by    #
@@ -54,8 +55,8 @@ fi
 #################################
 
 # download URLs
-WINGS_DL_BASE_URL="https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_"
-GITHUB_BASE_URL="https://raw.githubusercontent.com/vilhelmprytz/pterodactyl-installer/$GITHUB_SOURCE"
+WINGS_DL_BASE_URL="https://github.com/pterodactyl/wings/releases/tag/v1.5.3/download/wings_linux_"
+GITHUB_BASE_URL="https://raw.githubusercontent.com/Snzy027/pterodactyl-installer/$GITHUB_SOURCE"
 
 COLOR_RED='\033[0;31m'
 COLOR_NC='\033[0m'
@@ -84,14 +85,14 @@ regex="^(([A-Za-z0-9]+((\.|\-|\_|\+)?[A-Za-z0-9]?)*[A-Za-z0-9]+)|[A-Za-z0-9]+)@(
 ####### Version checking ########
 #################################
 
-get_latest_release() {
-  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-    grep '"tag_name":' |                                            # Get tag line
-    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
-}
+#get_latest_release() {
+#  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+#    grep '"tag_name":' |                                            # Get tag line
+#    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+#}
 
 echo "* Retrieving release information.."
-WINGS_VERSION="$(get_latest_release "pterodactyl/wings")"
+WINGS_VERSION="v1.5.3"
 
 ####### Other library functions ########
 
@@ -631,7 +632,7 @@ main() {
   echo "* This script is not associated with the official Pterodactyl Project."
   echo "*"
   echo "* Running $OS version $OS_VER."
-  echo "* Latest pterodactyl/wings is $WINGS_VERSION"
+  echo "* pterodactyl/wings is $WINGS_VERSION"
   print_brake 70
 
   # checks if the system is compatible with this installation script

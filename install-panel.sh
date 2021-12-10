@@ -71,8 +71,8 @@ ASSUME_SSL=false
 CONFIGURE_LETSENCRYPT=false
 
 # download URLs
-PANEL_DL_URL="https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz"
-GITHUB_BASE_URL="https://raw.githubusercontent.com/vilhelmprytz/pterodactyl-installer/$GITHUB_SOURCE"
+PANEL_DL_URL="https://github.com/pterodactyl/panel/releases/tag/v1.6.5/download/panel.tar.gz"
+GITHUB_BASE_URL="https://raw.githubusercontent.com/Snzy027/pterodactyl-installer/$GITHUB_SOURCE"
 
 # ufw firewall
 CONFIGURE_UFW=false
@@ -89,15 +89,15 @@ regex="^(([A-Za-z0-9]+((\.|\-|\_|\+)?[A-Za-z0-9]?)*[A-Za-z0-9]+)|[A-Za-z0-9]+)@(
 ####### Version checking ########
 
 # define version using information from GitHub
-get_latest_release() {
-  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-    grep '"tag_name":' |                                            # Get tag line
-    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
-}
+#get_latest_release() {
+#  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+#    grep '"tag_name":' |                                            # Get tag line
+#    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+#}
 
 # pterodactyl version
 echo "* Retrieving release information.."
-PTERODACTYL_VERSION="$(get_latest_release "pterodactyl/panel")"
+PTERODACTYL_VERSION="v1.6.5"
 
 ####### lib func #######
 
@@ -917,13 +917,13 @@ main() {
   print_brake 70
   echo "* Pterodactyl panel installation script @ $SCRIPT_RELEASE"
   echo "*"
-  echo "* Copyright (C) 2018 - 2021, Vilhelm Prytz, <vilhelm@prytznet.se>"
-  echo "* https://github.com/vilhelmprytz/pterodactyl-installer"
+  echo "* Copyright (C) 2018 - 2021, Snzy Junior"
+  echo "* https://github.com/Snzy027/pterodactyl-installer"
   echo "*"
   echo "* This script is not associated with the official Pterodactyl Project."
   echo "*"
   echo "* Running $OS version $OS_VER."
-  echo "* Latest pterodactyl/panel is $PTERODACTYL_VERSION"
+  echo "* pterodactyl/panel is $PTERODACTYL_VERSION"
   print_brake 70
 
   # checks if the system is compatible with this installation script
